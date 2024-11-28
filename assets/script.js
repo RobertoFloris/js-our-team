@@ -41,11 +41,11 @@ const teamMembers = [
 function createHtmlCard(member){
   const {name, role, email, img} = member;
   return `
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-lg-6 col-xxl-4">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-4">
-              <img src="${img}" class="img-fluid rounded-start" alt="${name}">
+              <img src="./assets/${img}" class="img-fluid rounded-start" alt="${name}">
             </div>
             <div class="col-8">
               <div class="card-body">
