@@ -1,3 +1,5 @@
+const cardTeamMembers = document.querySelector(".card-teamMembers");
+
 const teamMembers = [
   {
     name: "Marco Bianchi",
@@ -62,16 +64,43 @@ function createHtmlCard(member){
 
 //creo una funzione che mi permette di avere una concatenazione di membri, ogni volta con diverse variabili
 function htmlMembers(array){
-  let cards="";
+  cardTeamMembers.innerHTML = "";
   for (let card of array){
-    cards += createHtmlCard(card)
+    cardTeamMembers.innerHTML += createHtmlCard(card)
   }
-
-  const cardTeamMembers = document.querySelector(".card-teamMembers");
-  cardTeamMembers.innerHTML = cards
 }
 
 //richiamo la funzione per concatenare
 htmlMembers(teamMembers)
 
+
+//al submit del form richiama la funzione newMember
+const form = document.querySelector("form")
+form.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  newMember();
+})
+
+
+//Creo un nuovo oggetto con le proprietà name, role, email, img con il valore dell'elemento corrispondente 
+function newMember(){
+  const name = document.getElementById("name").value;
+  const role = document.getElementById("role").value;
+  const email = document.getElementById("email").value;
+  const img = document.getElementById("img").value;
+
+  const newCard = {
+    name,
+    role,
+    email,
+    img
+  }
+
+  //mi permette di aggiornare la lista con l'elemento in più senza ricaricare tutto l'array
+  cardTeamMembers.innerHTML += createHtmlCard(newCard);
+
+  // teamMembers.push(newCard)
+  // htmlMembers(teamMembers)
+  
+}
 
