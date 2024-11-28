@@ -41,7 +41,7 @@ const teamMembers = [
 function createHtmlCard(member){
   const {name, role, email, img} = member;
   return `
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-4">
@@ -67,7 +67,8 @@ function htmlMembers(array){
     cards += createHtmlCard(card)
   }
 
-  console.log(cards)
+  const cardTeamMembers = document.querySelector(".card-teamMembers");
+  cardTeamMembers.innerHTML = cards
 }
 
 //richiamo la funzione per concatenare
