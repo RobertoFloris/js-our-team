@@ -1,4 +1,8 @@
 const cardTeamMembers = document.querySelector(".card-teamMembers");
+const name = document.getElementById("name");
+const role = document.getElementById("role");
+const email = document.getElementById("email");
+const img = document.getElementById("img");
 
 const teamMembers = [
   {
@@ -39,6 +43,24 @@ const teamMembers = [
   }
 ];
 
+//richiamo la funzione per concatenare
+htmlMembers(teamMembers)
+
+
+
+//al submit del form richiama la funzione newMember
+const form = document.querySelector("form")
+form.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  newMember();
+  document.getElementById("name").value= "";
+  document.getElementById("role").value= "";
+  document.getElementById("email").value= "";
+  document.getElementById("img").value= "";
+})
+
+
+
 //creo una funzione che mi permette di creare l'html della card di un memebro, destrutturando l'oggetto e ottenendo le variabili che mi servono
 function createHtmlCard(member){
   const {name, role, email, img} = member;
@@ -62,6 +84,7 @@ function createHtmlCard(member){
   `
 }
 
+
 //creo una funzione che mi permette di avere una concatenazione di membri, ogni volta con diverse variabili
 function htmlMembers(array){
   cardTeamMembers.innerHTML = "";
@@ -69,17 +92,6 @@ function htmlMembers(array){
     cardTeamMembers.innerHTML += createHtmlCard(card)
   }
 }
-
-//richiamo la funzione per concatenare
-htmlMembers(teamMembers)
-
-
-//al submit del form richiama la funzione newMember
-const form = document.querySelector("form")
-form.addEventListener("submit", (e)=>{
-  e.preventDefault();
-  newMember();
-})
 
 
 //Creo un nuovo oggetto con le proprietà name, role, email, img con il valore dell'elemento corrispondente 
